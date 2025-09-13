@@ -1,0 +1,105 @@
+.mini-header {
+  background-color: $color-dark;
+  color: $color-text-light;
+  text-align: center;
+  padding: $spacing-sm 0;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1030;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease-in-out;
+
+  &__text {
+    margin: 0;
+  }
+
+  @media (max-width: $breakpoint-md) {
+    font-size: 0.75rem;
+    padding: $spacing-sm 0;
+  }
+}
+
+.main-header {
+  width: 100%;
+  position: fixed;
+  top: 40px;
+  left: 0;
+  background-color: $color-medium;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+  z-index: 1020;
+  transition: all 0.3s ease-in-out;
+
+  &__nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: $spacing-md 0;
+  }
+
+  &__menu-button,
+  &__cart-button {
+    font-size: 1.25rem;
+    color: darken($color-text, 10%);
+    padding: $spacing-sm;
+    transition: color 0.15s;
+    position: relative;
+
+    &:hover {
+      color: black;
+    }
+
+    @media (max-width: $breakpoint-md) {
+      font-size: 1.1rem;
+    }
+  }
+
+  &__cart-count {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    background-color: black;
+    color: $color-text-light;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__logo-container {
+    display: flex;
+    align-items: center;
+  }
+
+  &__logo {
+    height: 40px;
+    width: auto;
+    transition: height 0.3s ease-in-out;
+
+    @media (max-width: $breakpoint-md) {
+      height: 32px;
+    }
+  }
+}
+
+// Estilos para cuando se hace scroll
+body.scrolled {
+  .mini-header {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+
+  .main-header {
+    top: 0;
+  }
+}

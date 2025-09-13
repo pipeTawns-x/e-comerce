@@ -1,0 +1,125 @@
+.cart-sidebar {
+  border: none;
+  border-radius: 0;
+
+  .modal-header {
+    border-bottom: 1px solid $color-border;
+    padding: $spacing-md 24px;
+  }
+
+  .modal-body {
+    padding: $spacing-md;
+    max-height: 60vh;
+    overflow-y: auto;
+  }
+
+  .modal-footer {
+    border-top: 1px solid $color-border;
+    padding: $spacing-md;
+  }
+
+  &__title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: $color-text;
+  }
+
+  &__close-button {
+    font-size: 1.25rem;
+    color: black;
+    padding: 4px;
+    transition: color 0.15s;
+
+    &:hover {
+      color: $color-text;
+    }
+  }
+
+  &__total {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    margin-bottom: $spacing-md;
+
+    span {
+      color: $color-text;
+    }
+  }
+
+  &__checkout-button {
+    width: 100%;
+    padding: $spacing-md;
+    background-color: $color-dark;
+    color: $color-text-light;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: background-color 0.15s;
+
+    &:hover {
+      background-color: darken($color-dark, 10%);
+    }
+  }
+}
+
+.cart-item {
+  display: flex;
+  gap: $spacing-md;
+  padding: $spacing-md 0;
+  border-bottom: 1px solid $color-border;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &-image {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+
+  &-details {
+    flex-grow: 1;
+  }
+
+  &-name {
+    font-size: 0.9rem;
+    color: darken($color-text, 20%);
+    margin-bottom: 4px;
+  }
+
+  &-price {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: $color-accent;
+    margin-bottom: $spacing-sm;
+  }
+
+  &-quantity {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+  }
+}
+
+.quantity-button {
+  width: 24px;
+  height: 24px;
+  border: 1px solid black;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-accent;
+}
+
+.remove-item-button {
+  color: black;
+  font-size: 0.9rem;
+  transition: color 0.15s;
+
+  &:hover {
+    color: $color-text;
+  }
+}

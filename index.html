@@ -20,22 +20,25 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="sass.css">
-    <script src="script.js"></script>
+    <!-- Feather Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <link rel="stylesheet" href="css/styles.css">
 
     <meta name="FrayLE" content="index, follow">
     <meta name="theme-color" content="#000000">
 </head>
 
 <body>
-
     <div class="mini-header" id="miniHeader">
         <p class="mini-header__text">Envío gratis a todo México / Free shipping to all México</p>
     </div>
 
     <header class="main-header" id="mainHeader">
-        <nav class="main-header__nav-container">
+        <nav class="main-header__nav-container container">
             <button class="main-header__menu-button" aria-label="Menú principal">
                 <i data-feather="menu"></i>
             </button>
@@ -44,7 +47,7 @@
                 <img src="img/logofrayle.png" alt="Logo FrayLE" class="main-header__logo" width="120" height="40">
             </div>
 
-            <button class="main-header__cart-button" aria-label="Carrito de compras">
+            <button class="main-header__cart-button" type="button" data-bs-toggle="modal" data-bs-target="#cartModal" aria-label="Carrito de compras">
                 <i data-feather="shopping-cart"></i>
                 <span class="main-header__cart-count">0</span>
             </button>
@@ -53,101 +56,120 @@
 
     <main>
         <section class="hero-section">
-            <h1 class="hero-section__title">FRAYLE SHOP</h1>
-            <p class="hero-section__subtitle">Selección de la mejor ropa y distribución de la marca FrayLE&copy;</p>
+            <div class="container">
+                <h1 class="hero-section__title">FRAYLE SHOP</h1>
+                <p class="hero-section__subtitle">Selección de la mejor ropa y distribución de la marca FrayLE&copy;</p>
+            </div>
         </section>
 
         <section class="banner-section">
-            <div class="banner-section__video-container">
-                <video autoplay muted loop playsinline class="banner-section__background-video"
-                    aria-label="Video promocional">
-                    <source src="img/videologo.mp4" type="video/mp4">
-                    <source src="img/videologo.webm" type="video/webm">
-                    Tu navegador no soporta videos HTML5.
-                </video>
-                <button class="banner-section__video-play-button" aria-label="Reproducir video" hidden>
-                    <i data-feather="play"></i>
-                </button>
-                <div class="banner-section__video-overlay"></div>
-                <div class="banner-section__content">
-                    <h2 class="banner-section__title">NUEVOS PRODUCTOS</h2>
-                    <p class="banner-section__description">Descubre nuestra última colección</p>
+            <div class="container">
+                <div class="banner-section__video-container position-relative">
+                    <video autoplay muted loop playsinline class="banner-section__background-video" aria-label="Video promocional">
+                        <source src="img/videologo.mp4" type="video/mp4">
+                        <source src="img/videologo.webm" type="video/webm">
+                        Tu navegador no soporta videos HTML5.
+                    </video>
+                    <button class="banner-section__video-play-button position-absolute top-50 start-50 translate-middle" aria-label="Reproducir video" hidden>
+                        <i data-feather="play"></i>
+                    </button>
+                    <div class="banner-section__video-overlay position-absolute top-0 start-0 w-100 h-100"></div>
+                    <div class="banner-section__content position-absolute top-50 start-50 translate-middle text-center">
+                        <h2 class="banner-section__title">NUEVOS PRODUCTOS</h2>
+                        <p class="banner-section__description">Descubre nuestra última colección</p>
+                    </div>
+                </div>
+
+                <div class="products-grid row g-4 mt-4">
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <article class="product-card h-100">
+                            <div class="product-card__image-container">
+                                <img src="img/off-white.png" alt="OFF-WHITE Long Sleeve 23 Abloh Black Yellow" class="product-card__image" width="280" height="280" loading="lazy">
+                            </div>
+                            <div class="product-card__info">
+                                <h3 class="product-card__title">OFF-WHITE Long Sleeve</h3>
+                                <p class="product-card__price">$18,000.00 MXN</p>
+                                <button class="product-card__add-to-cart-button">Añadir al carrito</button>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <article class="product-card h-100">
+                            <div class="product-card__image-container">
+                                <img src="img/NBA.png" alt="NBA COLLAGE VEGAN LEATHER JACKET Red" class="product-card__image" width="280" height="280" loading="lazy">
+                            </div>
+                            <div class="product-card__info">
+                                <h3 class="product-card__title">NBA Vegan Leather Jacket</h3>
+                                <p class="product-card__price">$25,000.00 MXN</p>
+                                <button class="product-card__add-to-cart-button">Añadir al carrito</button>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <article class="product-card h-100">
+                            <div class="product-card__image-container">
+                                <img src="img/travis.png" alt="Air Jordan 1 Retro Low OG SP Travis Scott Reverse Mocha" class="product-card__image" width="280" height="280" loading="lazy">
+                            </div>
+                            <div class="product-card__info">
+                                <h3 class="product-card__title">Jordan 1 Travis Scott</h3>
+                                <p class="product-card__price">$59,000.00 MXN</p>
+                                <button class="product-card__add-to-cart-button">Añadir al carrito</button>
+                            </div>
+                        </article>
+                    </div>
                 </div>
             </div>
-
-            <div class="products-grid">
-                <article class="product-card">
-                    <div class="product-card__image-container">
-                        <img src="img/off-white.png" alt="OFF-WHITE Long Sleeve 23 Abloh Black Yellow"
-                            class="product-card__image" width="280" height="280" loading="lazy">
-                    </div>
-                    <div class="product-card__info">
-                        <h3 class="product-card__title">OFF-WHITE Long Sleeve</h3>
-                        <p class="product-card__price">$18,000.00 MXN</p>
-                        <button class="product-card__add-to-cart-button">Añadir al carrito</button>
-                    </div>
-                </article>
-
-                <article class="product-card">
-                    <div class="product-card__image-container">
-                        <img src="img/NBA.png" alt="NBA COLLAGE VEGAN LEATHER JACKET Red" class="product-card__image"
-                            width="280" height="280" loading="lazy">
-                    </div>
-                    <div class="product-card__info">
-                        <h3 class="product-card__title">NBA Vegan Leather Jacket</h3>
-                        <p class="product-card__price">$25,000.00 MXN</p>
-                        <button class="product-card__add-to-cart-button">Añadir al carrito</button>
-                    </div>
-                </article>
-
-                <article class="product-card">
-                    <div class="product-card__image-container">
-                        <img src="img/travis.png" alt="Air Jordan 1 Retro Low OG SP Travis Scott Reverse Mocha"
-                            class="product-card__image" width="280" height="280" loading="lazy">
-                    </div>
-                    <div class="product-card__info">
-                        <h3 class="product-card__title">Jordan 1 Travis Scott</h3>
-                        <p class="product-card__price">$59,000.00 MXN</p>
-                        <button class="product-card__add-to-cart-button">Añadir al carrito</button>
-                    </div>
-                </article>
-            </div>
         </section>
-
-        <aside class="cart-sidebar" aria-label="Carrito de compras" aria-hidden="true">
-            <div class="cart-sidebar__header">
-                <h2 class="cart-sidebar__title">TU CARRITO</h2>
-                <button class="cart-sidebar__close-button" aria-label="Cerrar carrito">
-                    <i data-feather="x"></i>
-                </button>
-            </div>
-            <div class="cart-sidebar__items">
-            </div>
-            <div class="cart-sidebar__summary">
-                <p class="cart-sidebar__total">Total: <span>$0.00 MXN</span></p>
-                <button class="cart-sidebar__checkout-button">Proceder al pago</button>
-            </div>
-        </aside>
     </main>
 
+    <!-- Modal de Carrito con Bootstrap -->
+    <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content cart-sidebar">
+                <div class="modal-header cart-sidebar__header">
+                    <h5 class="modal-title cart-sidebar__title" id="cartModalLabel">TU CARRITO</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body cart-sidebar__items">
+                    <!-- Los items del carrito se insertarán aquí dinámicamente -->
+                </div>
+                <div class="modal-footer cart-sidebar__summary">
+                    <p class="cart-sidebar__total">Total: <span>$0.00 MXN</span></p>
+                    <button type="button" class="cart-sidebar__checkout-button">Proceder al pago</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <footer class="main-footer">
-        <div class="main-footer__content">
-            <p>&copy; <span id="current-year">2023</span> FrayLE Shop. Todos los derechos reservados.</p>
-            <div class="main-footer__social-links">
-                <a href="#" aria-label="Instagram"><i data-feather="instagram"></i></a>
-                <a href="#" aria-label="Facebook"><i data-feather="facebook"></i></a>
-                <a href="#" aria-label="Twitter"><i data-feather="twitter"></i></a>
+        <div class="container">
+            <div class="main-footer__content">
+                <p>&copy; <span id="current-year">2023</span> FrayLE Shop. Todos los derechos reservados.</p>
+                <div class="main-footer__social-links">
+                    <a href="#" aria-label="Instagram"><i data-feather="instagram"></i></a>
+                    <a href="#" aria-label="Facebook"><i data-feather="facebook"></i></a>
+                    <a href="#" aria-label="Twitter"><i data-feather="twitter"></i></a>
+                </div>
             </div>
         </div>
     </footer>
 
-    <div class="overlay" aria-hidden="true"></div>
-
-    <script src="https://unpkg.com/feather-icons"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
     <script>
-        feather.replace(); // Inicializa Feather Icons
+        // Inicializar Feather Icons
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof feather !== 'undefined') {
+                feather.replace();
+            }
+            
+            // Actualizar año actual
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+        });
     </script>
-
 </body>
 
 </html>
