@@ -1,0 +1,160 @@
+// Menú hamburguesa
+.hamburger-nav {
+  opacity: 0;
+  visibility: hidden;
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 300px;
+  height: 100%;
+  background-color: $color-card;
+  z-index: 1040;
+  transition: all 0.3s ease;
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.15);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+
+  &.visible {
+    opacity: 1;
+    visibility: visible;
+    right: 0;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: $spacing-md $spacing-lg;
+    border-bottom: 1px solid $color-border;
+    background-color: $color-medium;
+  }
+
+  &__logo {
+    height: 32px;
+    width: auto;
+  }
+
+  &__close {
+    color: $color-text;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: $spacing-sm;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.15s;
+
+    &:hover {
+      color: $color-accent;
+    }
+  }
+
+  &__content {
+    flex-grow: 1;
+    padding: $spacing-md 0;
+  }
+
+  &__category {
+    border-bottom: 1px solid $color-border;
+  }
+
+  &__category-button {
+    width: 100%;
+    padding: $spacing-md $spacing-lg;
+    background: none;
+    border: none;
+    text-align: left;
+    font-weight: 600;
+    color: $color-text;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.15s;
+
+    &:hover {
+      background-color: darken($color-card, 5%);
+      color: $color-accent;
+    }
+  }
+
+  &__chevron {
+    transition: transform 0.3s ease;
+  }
+
+  &__subcategories {
+    display: none;
+    padding: 0 $spacing-lg $spacing-md;
+    
+    &.active {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+  }
+
+  &__link {
+    display: block;
+    padding: $spacing-sm 0;
+    color: $color-text;
+    text-decoration: none;
+    transition: color 0.15s;
+    
+    &:hover {
+      color: $color-accent;
+    }
+  }
+
+  &__footer {
+    padding: $spacing-md $spacing-lg;
+    text-align: center;
+    border-top: 1px solid $color-border;
+    color: $color-medium;
+    font-size: 0.875rem;
+  }
+}
+
+.hamburger-nav__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1039;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  
+  &.active {
+    display: block;
+    opacity: 1;
+  }
+}
+
+// Animación para mostrar subcategorías
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Media queries para responsividad
+@media (max-width: $breakpoint-md) {
+  .hamburger-nav {
+    width: 100%;
+    right: -100%;
+  }
+}
+
+// Estilos para cuando el menú está abierto
+body.menu-open {
+  overflow: hidden;
+}

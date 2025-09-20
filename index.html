@@ -38,13 +38,65 @@
     </div>
 
     <header class="main-header" id="mainHeader">
-        <nav class="main-header__nav-container container">
-            <button class="main-header__menu-button" aria-label="Menú principal">
+        <nav class="navbar navbar-expand-lg main-header__nav-container container">
+            <button class="navbar-toggler main-header__menu-button" type="button" data-bs-toggle="collapse" 
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
+                aria-expanded="false" aria-label="Toggle navigation">
                 <i data-feather="menu"></i>
             </button>
 
             <div class="main-header__logo-container">
                 <img src="img/logofrayle.png" alt="Logo FrayLE" class="main-header__logo" width="120" height="40">
+            </div>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMujer" role="button" 
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Mujer
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMujer">
+                            <li><a class="dropdown-item" href="#">Ropa</a></li>
+                            <li><a class="dropdown-item" href="#">Watches</a></li>
+                            <li><a class="dropdown-item" href="#">Caps</a></li>
+                            <li><a class="dropdown-item" href="#">SNKRS</a></li>
+                            <li><a class="dropdown-item" href="#">Mistery-Box</a></li>
+                            <li><a class="dropdown-item" href="#">Fragancias</a></li>
+                            <li><a class="dropdown-item" href="#">Bolsos/Maletas</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownHombre" role="button" 
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Hombre
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownHombre">
+                            <li><a class="dropdown-item" href="#">Ropa</a></li>
+                            <li><a class="dropdown-item" href="#">Watches</a></li>
+                            <li><a class="dropdown-item" href="#">Caps</a></li>
+                            <li><a class="dropdown-item" href="#">SNKRS</a></li>
+                            <li><a class="dropdown-item" href="#">Mistery-Box</a></li>
+                            <li><a class="dropdown-item" href="#">Fragancias</a></li>
+                            <li><a class="dropdown-item" href="#">Bolsos/Maletas</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownTodos" role="button" 
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Todos
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownTodos">
+                            <li><a class="dropdown-item" href="#">Ropa</a></li>
+                            <li><a class="dropdown-item" href="#">Watches</a></li>
+                            <li><a class="dropdown-item" href="#">Caps</a></li>
+                            <li><a class="dropdown-item" href="#">SNKRS</a></li>
+                            <li><a class="dropdown-item" href="#">Mistery-Box</a></li>
+                            <li><a class="dropdown-item" href="#">Fragancias</a></li>
+                            <li><a class="dropdown-item" href="#">Bolsos/Maletas</a></li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
 
             <button class="main-header__cart-button" type="button" data-bs-toggle="modal" data-bs-target="#cartModal" aria-label="Carrito de compras">
@@ -156,83 +208,7 @@
         </div>
     </footer>
 
-    <!-- Menú lateral mejorado -->
-    <div class="side-menu" id="sideMenu">
-        <div class="side-menu__content">
-            <button class="side-menu__close-button" aria-label="Cerrar menú">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x">
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                </svg>
-            </button>
-            
-            <div class="side-menu__header">
-                <h3 class="side-menu__title">Categorías</h3>
-            </div>
-            
-            <!-- Filtro por género -->
-            <div class="side-menu__filter">
-                <button class="side-menu__filter-button active" data-filter="all">Todo</button>
-                <button class="side-menu__filter-button" data-filter="men">Hombre</button>
-                <button class="side-menu__filter-button" data-filter="women">Mujer</button>
-            </div>
-            
-            <!-- Lista de categorías -->
-            <nav class="side-menu__nav">
-                <div class="side-menu__section">
-                    <h4 class="side-menu__section-title">Novedades</h4>
-                    <div class="side-menu__category" data-categories="all men women">
-                        <a href="#" class="side-menu__link">Bolsas y Artículos de Piel</a>
-                    </div>
-                </div>
-
-                <div class="side-menu__section">
-                    <h4 class="side-menu__section-title">Categorías</h4>
-                    <div class="side-menu__category" data-categories="all men women">
-                        <a href="#" class="side-menu__link">Ropa</a>
-                    </div>
-                    <div class="side-menu__category" data-categories="all men women">
-                        <a href="#" class="side-menu__link">Watches</a>
-                    </div>
-                    <div class="side-menu__category" data-categories="all men women">
-                        <a href="#" class="side-menu__link">Caps</a>
-                    </div>
-                    <div class="side-menu__category" data-categories="all men women">
-                        <a href="#" class="side-menu__link">SNKRS</a>
-                    </div>
-                    <div class="side-menu__category" data-categories="all men women">
-                        <a href="#" class="side-menu__link">Mistery-Box</a>
-                    </div>
-                    <div class="side-menu__category" data-categories="all men women">
-                        <a href="#" class="side-menu__link">Fragancias</a>
-                    </div>
-                    <div class="side-menu__category" data-categories="all men women">
-                        <a href="#" class="side-menu__link">Bolsos/Maletas</a>
-                    </div>
-                </div>
-
-                <div class="side-menu__section">
-                    <h4 class="side-menu__section-title">Servicios</h4>
-                    <div class="side-menu__category" data-categories="all men women">
-                        <a href="#" class="side-menu__link">Personalización</a>
-                    </div>
-                </div>
-
-                <div class="side-menu__section">
-                    <h4 class="side-menu__section-title">¿Cómo podemos ayudarle?</h4>
-                    <div class="side-menu__category" data-categories="all men women">
-                        <a href="tel:+528009991807" class="side-menu__link">+52 800 999 1807</a>
-                    </div>
-                </div>
-            </nav>
-
-            <div class="side-menu__footer">
-                <p>© 2025 FrayLE Shop</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Bootstrap JS -->
+    <!-- Bootstrap JS Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/main.js"></script>
     <script>
@@ -244,50 +220,6 @@
             
             // Actualizar año actual
             document.getElementById('current-year').textContent = new Date().getFullYear();
-            
-            // Funcionalidad del filtro de categorías
-            const filterButtons = document.querySelectorAll('.side-menu__filter-button');
-            const categories = document.querySelectorAll('.side-menu__category');
-            
-            filterButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    // Remover clase active de todos los botones
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
-                    
-                    // Agregar clase active al botón clickeado
-                    this.classList.add('active');
-                    
-                    // Obtener el filtro seleccionado
-                    const filter = this.getAttribute('data-filter');
-                    
-                    // Mostrar/ocultar categorías según el filtro
-                    categories.forEach(category => {
-                        const categoryFilters = category.getAttribute('data-categories').split(' ');
-                        
-                        if (filter === 'all' || categoryFilters.includes(filter)) {
-                            category.style.display = 'block';
-                        } else {
-                            category.style.display = 'none';
-                        }
-                    });
-                });
-            });
-
-            // Efecto hover para el header
-            const mainHeader = document.getElementById('mainHeader');
-            const videoOverlay = document.querySelector('.banner-section__video-overlay');
-            
-            if (mainHeader && videoOverlay) {
-                mainHeader.addEventListener('mouseenter', function() {
-                    videoOverlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
-                    this.style.backgroundColor = 'rgba(245, 245, 245, 0.95)';
-                });
-
-                mainHeader.addEventListener('mouseleave', function() {
-                    videoOverlay.style.backgroundColor = '';
-                    this.style.backgroundColor = '';
-                });
-            }
         });
     </script>
 </body>

@@ -1,36 +1,14 @@
-// Manejar el comportamiento del header al hacer scroll
-document.addEventListener('DOMContentLoaded', function() {
-    let lastScrollTop = 0;
-    const miniHeader = document.getElementById('miniHeader');
-    const mainHeader = document.getElementById('mainHeader');
-    const scrollThreshold = 50;
+// js/modules/cartManager.js
 
-    window.addEventListener('scroll', function() {
-        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        
-        if (scrollTop > lastScrollTop && scrollTop > scrollThreshold) {
-            document.body.classList.add('scrolled');
-        } else {
-            if (scrollTop <= scrollThreshold) {
-                document.body.classList.remove('scrolled');
-            }
-        }
-        lastScrollTop = scrollTop;
-    });
-
-    // Inicializar tooltips de Bootstrap
-    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-    var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
-        return new bootstrap.Tooltip(tooltipTriggerEl);
-    });
-
-    // Funcionalidad del carrito
+export function setupCart() {
     const cartButtons = document.querySelectorAll('.product-card__add-to-cart-button');
     const cartCount = document.querySelector('.main-header__cart-count');
-    let cartItems = [];
     const cartModal = document.getElementById('cartModal');
-    const cartItemsContainer = document.querySelector('.cart-sidebar__items');
+    const cartItemsContainer = document.querySelector('.modal-body.cart-sidebar__items');
     const cartTotalElement = document.querySelector('.cart-sidebar__total span');
+    const checkoutButton = document.querySelector('.cart-sidebar__checkout-button');
+
+    let cartItems = [];
 
     // Función para agregar productos al carrito
     cartButtons.forEach((button, index) => {
@@ -41,16 +19,13 @@ document.addEventListener('DOMContentLoaded', function() {
             const price = parseFloat(priceText.replace('$', '').replace(',', '').replace(' MXN', ''));
             const image = productCard.querySelector('.product-card__image').src;
             
-            // Verificar si el producto ya está en el carrito
             const existingItemIndex = cartItems.findIndex(item => item.title === title);
             
             if (existingItemIndex !== -1) {
-                // Si ya existe, incrementar la cantidad
                 cartItems[existingItemIndex].quantity += 1;
             } else {
-                // Si no existe, agregar nuevo producto
                 cartItems.push({
-                    id: Date.now() + index, // ID único
+                    id: Date.now() + index,
                     title: title,
                     price: price,
                     quantity: 1,
@@ -58,10 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             }
             
-            // Actualizar contador del carrito
             updateCartCount();
-            
-            // Mostrar notificación de producto agregado
             showNotification('Producto agregado al carrito');
         });
     });
@@ -74,12 +46,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Función para mostrar notificaciones
     function showNotification(message) {
-        // Crear elemento de notificación
         const notification = document.createElement('div');
         notification.className = 'notification';
         notification.textContent = message;
         
-        // Agregar estilos
         notification.style.position = 'fixed';
         notification.style.bottom = '20px';
         notification.style.right = '20px';
@@ -91,15 +61,12 @@ document.addEventListener('DOMContentLoaded', function() {
         notification.style.opacity = '0';
         notification.style.transition = 'opacity 0.3s';
         
-        // Agregar al documento
         document.body.appendChild(notification);
         
-        // Mostrar con animación
         setTimeout(() => {
             notification.style.opacity = '1';
         }, 10);
         
-        // Ocultar después de 3 segundos
         setTimeout(() => {
             notification.style.opacity = '0';
             setTimeout(() => {
@@ -111,9 +78,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Función para calcular el descuento
     function calculateDiscount(totalItems) {
         if (totalItems > 3) {
-            return 0.12; // 12% de descuento para más de 3 artículos
+            return 0.12;
         } else if (totalItems > 2) {
-            return 0.10; // 10% de descuento para más de 2 artículos
+            return 0.10;
         }
         return 0;
     }
@@ -124,29 +91,23 @@ document.addEventListener('DOMContentLoaded', function() {
         
         if (itemIndex !== -1) {
             if (cartItems[itemIndex].quantity > 1) {
-                // Si hay más de uno, reducir la cantidad
                 cartItems[itemIndex].quantity -= 1;
             } else {
-                // Si solo hay uno, eliminar el producto
                 cartItems.splice(itemIndex, 1);
             }
             
-            // Actualizar contador del carrito
             updateCartCount();
             
-            // Actualizar modal si está abierto
             if (document.querySelector('.modal.show')) {
                 updateCartModal();
             }
             
-            // Mostrar notificación
             showNotification('Producto eliminado del carrito');
         }
     }
 
     // Función para actualizar el modal del carrito
     function updateCartModal() {
-        // Limpiar contenedor de items
         cartItemsContainer.innerHTML = '';
         
         let total = 0;
@@ -158,25 +119,28 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         
-        // Calcular total y agregar items al modal
         cartItems.forEach(item => {
             const itemTotal = item.price * item.quantity;
             total += itemTotal;
             totalItems += item.quantity;
             
             const cartItem = document.createElement('div');
-            cartItem.className = 'cart-sidebar__item';
+            cartItem.className = 'cart-item';
             cartItem.innerHTML = `
-                <div class="cart-sidebar__item-image">
-                    <img src="${item.image}" alt="${item.title}" width="60" height="60">
+                <div class="cart-item-image">
+                    <img src="${item.image}" alt="${item.title}">
                 </div>
-                <div class="cart-sidebar__item-details">
-                    <h6 class="cart-sidebar__item-title">${item.title}</h6>
-                    <p class="cart-sidebar__item-price">$${item.price.toLocaleString('es-MX')} MXN x ${item.quantity}</p>
-                    <p class="cart-sidebar__item-total">Subtotal: $${itemTotal.toLocaleString('es-MX')} MXN</p>
+                <div class="cart-item-details">
+                    <h6 class="cart-item-name">${item.title}</h6>
+                    <p class="cart-item-price">$${item.price.toLocaleString('es-MX', { minimumFractionDigits: 2 })} MXN</p>
+                    <div class="cart-item-quantity">
+                        <button class="quantity-button decrease" data-id="${item.id}">-</button>
+                        <span>${item.quantity}</span>
+                        <button class="quantity-button increase" data-id="${item.id}">+</button>
+                    </div>
                 </div>
-                <div class="cart-sidebar__item-actions">
-                    <button class="cart-sidebar__remove-button" data-id="${item.id}">
+                <div class="cart-item-actions">
+                    <button class="remove-item-button" data-id="${item.id}">
                         <i data-feather="trash-2"></i>
                     </button>
                 </div>
@@ -185,8 +149,7 @@ document.addEventListener('DOMContentLoaded', function() {
             cartItemsContainer.appendChild(cartItem);
         });
         
-        // Agregar event listeners a los botones de eliminar
-        const removeButtons = document.querySelectorAll('.cart-sidebar__remove-button');
+        const removeButtons = document.querySelectorAll('.remove-item-button');
         removeButtons.forEach(button => {
             button.addEventListener('click', function() {
                 const itemId = parseInt(this.getAttribute('data-id'));
@@ -194,20 +157,44 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
         
-        // Reemplazar iconos feather
+        const increaseButtons = document.querySelectorAll('.quantity-button.increase');
+        increaseButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const itemId = parseInt(this.getAttribute('data-id'));
+                const item = cartItems.find(i => i.id === itemId);
+                if (item) {
+                    item.quantity++;
+                    updateCartCount();
+                    updateCartModal();
+                }
+            });
+        });
+
+        const decreaseButtons = document.querySelectorAll('.quantity-button.decrease');
+        decreaseButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const itemId = parseInt(this.getAttribute('data-id'));
+                const item = cartItems.find(i => i.id === itemId);
+                if (item && item.quantity > 1) {
+                    item.quantity--;
+                    updateCartCount();
+                    updateCartModal();
+                } else if (item && item.quantity === 1) {
+                     removeFromCart(itemId);
+                }
+            });
+        });
+
         if (typeof feather !== 'undefined') {
             feather.replace();
         }
         
-        // Calcular descuento
         const discount = calculateDiscount(totalItems);
         const discountAmount = total * discount;
         const finalTotal = total - discountAmount;
         
-        // Actualizar total en el modal
         cartTotalElement.textContent = `$${finalTotal.toLocaleString('es-MX', { minimumFractionDigits: 2 })} MXN`;
         
-        // Mostrar información de descuento si aplica
         if (discount > 0) {
             const discountInfo = document.createElement('div');
             discountInfo.className = 'cart-sidebar__discount';
@@ -218,36 +205,26 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Actualizar el modal del carrito cuando se abra
     cartModal.addEventListener('show.bs.modal', function() {
         updateCartModal();
     });
 
-    // Botón de proceder al pago
-    const checkoutButton = document.querySelector('.cart-sidebar__checkout-button');
     checkoutButton.addEventListener('click', function() {
         if (cartItems.length === 0) {
             showNotification('El carrito está vacío');
             return;
         }
         
-        // Aquí iría la lógica de checkout
         showNotification('Procesando pago...');
         
-        // Simular proceso de pago
         setTimeout(() => {
-            // Limpiar carrito después del pago
             cartItems = [];
             updateCartCount();
             
-            // Cerrar modal
             const modal = bootstrap.Modal.getInstance(cartModal);
             modal.hide();
             
             showNotification('¡Pago realizado con éxito!');
         }, 2000);
     });
-
-    // Actualizar año actual
-    document.getElementById('current-year').textContent = new Date().getFullYear();
-});
+}
