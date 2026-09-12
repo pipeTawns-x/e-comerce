@@ -19,7 +19,9 @@ FrayLE Shop es un e-commerce moderno y elegante especializado en streetwear prem
 
 ## 📸 Capturas de pantalla
 
-(capturas en preparación)
+![Home de FrayLE Shop](docs/screenshots/home.jpg)
+
+Home de FrayLE Shop — catálogo con carrito.
 
 ## 🛠️ Tecnologías Utilizadas
 
