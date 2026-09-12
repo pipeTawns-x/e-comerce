@@ -17,6 +17,10 @@ FrayLE Shop es un e-commerce moderno y elegante especializado en streetwear prem
 - **Interfaz Moderna**: Diseño limpio y atractivo con animaciones suaves
 - **Optimizado**: Rendimiento optimizado con lazy loading de imágenes
 
+## 📸 Capturas de pantalla
+
+(capturas en preparación)
+
 ## 🛠️ Tecnologías Utilizadas
 
 - **HTML5**: Estructura semántica y accesible
@@ -59,13 +63,13 @@ e_comer 2/
 1. **Clona el repositorio**:
 
    ```bash
-   git clone https://github.com/pipetawns-x/e-commerce.git
+   git clone https://github.com/pipeTawns-x/e-comerce.git
    ```
 
 2. **Abre el proyecto**:
 
    ```bash
-   cd e-commerce
+   cd e-comerce
    ```
 
 3. **Abre en tu navegador**:
@@ -85,7 +89,7 @@ e_comer 2/
 
 El sitio está desplegado en **GitHub Pages** y disponible en:
 
-### 🔗 [https://pipetawns-x.github.io/e-commerce/](https://pipetawns-x.github.io/e-commerce/)
+### 🔗 [https://pipetawns-x.github.io/e-comerce/](https://pipetawns-x.github.io/e-comerce/)
 
 ## 📋 Funcionalidades JavaScript
 
@@ -137,7 +141,7 @@ Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más det
 
 ## 👨‍💻 Autor
 
-**pipefawns-x** - [GitHub](https://github.com/pipetawns-x)
+**pipeTawns-x** - [GitHub](https://github.com/pipeTawns-x)
 
 ## 🎯 Próximas Mejoras
 
