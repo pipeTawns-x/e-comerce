@@ -1,4 +1,4 @@
-# 🛍️ FrayLE Shop - E-commerce de Streetwear Premium
+# FrayLE Shop: e-commerce de streetwear
 
 ![FrayLE Shop](https://img.shields.io/badge/FrayLE-Shop-brightgreen)
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
@@ -7,77 +7,70 @@
 ![Bootstrap](https://img.shields.io/badge/Bootstrap-7952B3?logo=bootstrap&logoColor=white)
 ![Responsive](https://img.shields.io/badge/Responsive-Design-green)
 
-FrayLE Shop es un e-commerce moderno y elegante especializado en streetwear premium, diseñado con las mejores prácticas de desarrollo frontend y una experiencia de usuario excepcional.
+FrayLE Shop es una práctica que hice en EBAC y mi primer e-commerce completo: una tienda de streetwear con menú por categorías y un carrito que aplica descuento según cuántos artículos llevas.
 
-## ✨ Características
+Me sirvió de base para crear después [Carni-mvp](https://github.com/pipeTawns-x/Landingpages-Carni.pwa), la tienda en línea con la que llevé un negocio real al mundo digital.
 
-- **Diseño Responsivo**: Adaptado perfectamente a todos los dispositivos (mobile-first)
-- **Menú Hamburguesa**: Navegación intuitiva con categorías y subcategorías
-- **Carrito de Compras**: Funcionalidad completa con sistema de descuentos (10% y 12%)
-- **Interfaz Moderna**: Diseño limpio y atractivo con animaciones suaves
-- **Optimizado**: Rendimiento optimizado con lazy loading de imágenes
+## Características
 
-## 📸 Capturas de pantalla
+- Diseño responsivo, pensado primero para celular.
+- Menú hamburguesa con categorías y subcategorías.
+- Carrito de compras con descuento del 10 % desde tres artículos y del 12 % desde cuatro.
+- El carrito se abre en una ventana modal y muestra avisos en pantalla al usarlo.
+- Imágenes con carga diferida (`loading="lazy"`).
+
+## Capturas de pantalla
 
 ![Home de FrayLE Shop](docs/screenshots/home.jpg)
 
-Home de FrayLE Shop — catálogo con carrito.
+Home de FrayLE Shop con el catálogo y el carrito.
 
-## 🛠️ Tecnologías Utilizadas
+## Tecnologías
 
-- **HTML5**: Estructura semántica y accesible
-- **SASS/SCSS**: Preprocesador CSS con metodología BEM
-- **JavaScript ES6+**: Interactividad y manipulación del DOM
-- **Bootstrap 5**: Framework CSS para componentes responsivos
-- **Feather Icons**: Iconografía elegante y consistente
-- **GitHub Pages**: Despliegue automatizado
+- HTML5 con estructura semántica.
+- Sass (SCSS) organizado con la metodología BEM.
+- JavaScript (ES6+) para el carrito, el menú y los efectos de scroll.
+- Bootstrap 5.3 para la rejilla y los componentes.
+- Feather Icons para los íconos.
+- GitHub Pages para el despliegue.
 
-## 📦 Estructura del Proyecto
+## Estructura del proyecto
 
 ```
-e_comer 2/
+e-comerce/
 ├── css/
-│   ├── base/
-│   │   ├── _reset.scss
-│   │   └── _variables.scss
-│   ├── components/
-│   │   ├── _cards.scss
-│   │   └── _modal.scss
-│   ├── layout/
-│   │   ├── _grid.scss
-│   │   └── _header.scss
-│   ├── styles.css
-│   └── styles.scss
-├── img/
-│   ├── logofrayle.png
-│   ├── NBA.png
-│   ├── off-white.png
-│   ├── travis.png
-│   └── videologo.mp4
+│   ├── base/          (_reset.scss, _variables.scss)
+│   ├── components/    (_cards.scss, _hamburger-menu.scss, _modal.scss)
+│   ├── layout/        (_grid.scss, _header.scss)
+│   ├── styles.scss
+│   └── styles.css
+├── docs/screenshots/  (home.jpg)
+├── img/               (logo, imágenes y video del logo)
 ├── js/
-│   └── main.js
+│   ├── main.js
+│   └── modules /      (cartManager.js, header-effects.js, menuManager.js, scrollManager.js)
 ├── index.html
 └── README.md
 ```
 
-## 🚀 Instalación y Uso
+## Instalación y uso
 
-1. **Clona el repositorio**:
+1. Clona el repositorio:
 
    ```bash
    git clone https://github.com/pipeTawns-x/e-comerce.git
    ```
 
-2. **Abre el proyecto**:
+2. Entra a la carpeta:
 
    ```bash
    cd e-comerce
    ```
 
-3. **Abre en tu navegador**:
+3. Ábrelo en el navegador:
 
-   - Abre el archivo `index.html` directamente en tu navegador
-   - O utiliza un servidor local:
+   - Abre `index.html` directamente, o
+   - levanta un servidor local:
 
    ```bash
    # Con Python
@@ -87,73 +80,49 @@ e_comer 2/
    npx serve
    ```
 
-## 🌐 Despliegue
+## Ejemplo de uso
 
-El sitio está desplegado en **GitHub Pages** y disponible en:
+1. Abre la [demo](https://pipetawns-x.github.io/e-comerce/) o tu copia local.
+2. Agrega tres artículos al carrito: el resumen aplica un 10 % de descuento.
+3. Agrega un cuarto artículo: el descuento sube al 12 % y el total se recalcula solo.
 
-### 🔗 [https://pipetawns-x.github.io/e-comerce/](https://pipetawns-x.github.io/e-comerce/)
+## Despliegue
 
-## 📋 Funcionalidades JavaScript
+El sitio está publicado en GitHub Pages: [pipetawns-x.github.io/e-comerce](https://pipetawns-x.github.io/e-comerce/)
 
-1. **Sistema de Carrito**:
+## Funcionalidades en JavaScript
 
-   - Agregar/eliminar productos
-   - Cálculo automático de totales
-   - Sistema de descuentos escalonado (10% para 3+ items, 12% para 4+ items)
-   - Persistencia de datos durante la sesión
+1. Carrito (`cartManager.js`):
+   - Agregar y quitar productos.
+   - Cálculo automático del total y contador de artículos.
+   - Descuento escalonado: 10 % desde tres artículos y 12 % desde cuatro.
+   - Avisos en pantalla con las acciones del carrito.
+2. Menú (`menuManager.js`): abre y cierra el menú hamburguesa con sus categorías.
+3. Scroll (`scrollManager.js`): cambia el estilo de la página al pasar cierta altura de scroll.
 
-2. **Navegación Responsiva**:
+## Metodología
 
-   - Menú hamburguesa funcional con categorías desplegables
-   - Comportamiento inteligente al hacer scroll
+- BEM para nombrar las clases de CSS.
+- Mobile-first: primero el celular, después pantallas grandes.
+- SCSS dividido en base, componentes y layout.
+- HTML semántico.
 
-3. **Interacciones de UI**:
-   - Notificaciones toast para acciones del usuario
-   - Modales interactivos
-   - Animaciones y transiciones suaves
+## Compatibilidad
 
-## 🎨 Metodología y Estructura
+Pensado para las versiones recientes de Chrome, Firefox, Safari y Edge, y para celulares con iOS y Android.
 
-- **BEM (Block Element Modifier)**: Nomenclatura consistente en CSS
-- **Mobile-First**: Enfoque responsivo desde dispositivos móviles
-- **SCSS Modular**: Arquitectura escalable y mantenible
-- **Semántica HTML**: Estructura significativa y accesible
+## Contribuciones
 
-## 📱 Compatibilidad
+Es un proyecto personal de práctica. Si ves algo que se pueda mejorar, abre un issue o un pull request.
 
-- ✅ Chrome (versiones recientes)
-- ✅ Firefox (versiones recientes)
-- ✅ Safari (versiones recientes)
-- ✅ Edge (versiones recientes)
-- ✅ Dispositivos móviles (iOS y Android)
+## Licencia
 
-## 🤝 Contribución
+Por ahora el proyecto no tiene una licencia definida.
 
-Las contribuciones son bienvenidas. Para cambios importantes:
+## Autor
 
-1. Haz un Fork del proyecto
-2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
-3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
-4. Push a la rama (`git push origin feature/AmazingFeature`)
-5. Abre un Pull Request
+Felipe Torres ([@pipeTawns-x](https://github.com/pipeTawns-x))
 
-## 📄 Licencia
+## Próximas mejoras
 
-Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más detalles.
-
-## 👨‍💻 Autor
-
-**pipeTawns-x** - [GitHub](https://github.com/pipeTawns-x)
-
-## 🎯 Próximas Mejoras
-
-- [ ] Integración con pasarela de pagos
-- [ ] Sistema de autenticación de usuarios
-- [ ] Panel de administración
-- [ ] Modo oscuro
-- [ ] Búsqueda y filtrado avanzado
-- [ ] Reviews y valoraciones de productos
-
----
-
-⭐ ¡Dale una estrella al repositorio si te gustó el proyecto!
+Cosas que me gustaría sumar más adelante: pasarela de pagos, cuentas de usuario, panel de administración, modo oscuro, búsqueda con filtros y reseñas de productos.
